@@ -1,13 +1,13 @@
-/* Desenvolva um programa que leia do usuário uma sequência de números inteiros,
-    até que seja digitado o número 0(zero).
-    Após ser digitado o número zero o programa deve mostrar:
+/* Desenvolva um programa que leia do usuÃ¡rio uma sequÃªncia de nÃºmeros inteiros,
+    atÃ© que seja digitado o nÃºmero 0(zero).
+    ApÃ³s ser digitado o nÃºmero zero o programa deve mostrar:
 
-    1-quantos número não nulos foram digitados;
-    2-quantos números pares foram digitados;
-    3-a média dos negativos;
-    4-o maior número digitado.
+    1-quantos nÃºmero nÃ£o nulos foram digitados;
+    2-quantos nÃºmeros pares foram digitados;
+    3-a mÃ©dia dos negativos;
+    4-o maior nÃºmero digitado.
 
-    Autor: André Cunha
+    Autor: AndrÃ© Cunha
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,29 +24,23 @@ int main()
         scanf("%d", &n);
         printf("\n");
 
-         // Verifica se n é par
-        if(n%2==0 && n!=0)
-            cont_par++;
-
-        // Verifica se N é o maior numero
-        if(n>higher)
-            higher=n;
-
-         // Verifica se N > 0
-        if(n>0)
+        if(n!=0)
             cont_int++;
 
-        // Verifica se N é negativo
-        else if(n<0){
-            cont_int++;
-            cont_negtv++;
-            sum_negatv+=n;
+            // Verifica se n Ã© par
+            if(n%2==0 && n!=0)
+                cont_par++;
+
+            // Verifica se N Ã© o maior numero
+            if(n>higher)
+                higher=n;
+        
+            // Verifica se N Ã© negativo
+            if(n<0){
+                cont_negtv++;
+                sum_negatv+=n;
+            }
         }
-        // Verifica se N é zero
-        else
-            printf("Fim do programa!\n");
-
-
     }while(n!=0);   // Encerra o loop
 
     // Imprime os resultados
