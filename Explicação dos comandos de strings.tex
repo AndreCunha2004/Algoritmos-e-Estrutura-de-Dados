@@ -1,0 +1,175 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{abntex2cite} % Formato ABNT para citações
+\usepackage{geometry} 
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% Estilo do código fonte
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{green!60!black},
+    showstringspaces=false,
+    breaklines=true,
+    backgroundcolor=\color{lightgray!20}, % Fundo do código
+    frame=single, % Moldura ao redor do código
+    numbers=left, % Adiciona número nas linhas
+    numberstyle=\tiny\color{gray}
+}
+
+% Estilo da capa
+\title{
+    {\normalsize Instituto Federal do Espírito Santo - IFES} \\
+    {\normalsize Campus Cariacica} \\
+    \vspace{2cm}
+    \textbf{Relatório sobre Comandos da Biblioteca \texttt{string.h} em C}
+    \vspace{2cm}
+}
+\author{André Cunha - Enpro 4}
+\date{\today}
+
+\begin{document}
+
+% Capa
+\maketitle
+\newpage
+
+% Sumário
+\tableofcontents
+\newpage
+
+\section{Introdução}
+No contexto da linguagem C, a biblioteca \texttt{string.h} fornece um conjunto de funções para a manipulação de strings, que são arrays de caracteres terminados pelo caractere nulo (\texttt{'\textbackslash 0'}). A compreensão das principais funções dessa biblioteca é fundamental para o desenvolvimento de programas que lidam com dados textuais.
+
+Neste relatório, exploramos algumas das funções mais comuns da biblioteca, ilustrando seus usos com exemplos práticos e destacando sua importância no desenvolvimento de software em C.
+
+\section{Comandos Principais}
+
+A seguir, descreveremos as principais funções da biblioteca \texttt{string.h}, acompanhadas de exemplos práticos para cada uma delas.
+
+\subsection{\texttt{strlen()}: Calculando o Tamanho de uma String}
+A função \texttt{strlen()} retorna o tamanho de uma string, ou seja, a quantidade de caracteres até o caractere nulo (\texttt{'\textbackslash 0'}). Ela é amplamente utilizada para determinar o comprimento de strings armazenadas em arrays de caracteres.
+
+\textbf{Assinatura da função:}
+
+\begin{lstlisting}
+size_t strlen(const char *str);
+\end{lstlisting}
+
+\textbf{Exemplo Prático:}
+
+Imagine que você tenha uma string que representa uma frase ou palavra. Vamos medir seu comprimento:
+
+\begin{lstlisting}
+char str[] = "C Programming";
+printf("Tamanho da string: %lu\n", strlen(str));
+\end{lstlisting}
+
+No exemplo acima, a string \texttt{"C Programming"} tem 13 caracteres, e a função \texttt{strlen()} exibirá esse valor.
+
+\subsection{\texttt{strcpy()}: Copiando Strings}
+A função \texttt{strcpy()} copia o conteúdo de uma string para outra. Isso é útil quando queremos duplicar o conteúdo de uma string para realizar modificações sem alterar o original.
+
+\textbf{Assinatura da função:}
+
+\begin{lstlisting}
+char *strcpy(char *dest, const char *src);
+\end{lstlisting}
+
+\textbf{Exemplo Prático:}
+
+Pense no caso em que precisamos copiar uma palavra de uma variável para outra:
+
+\begin{lstlisting}
+char src[] = "Hello";
+char dest[10];
+strcpy(dest, src);
+printf("Destino: %s\n", dest);
+\end{lstlisting}
+
+Aqui, a string \texttt{"Hello"} é copiada para a variável \texttt{dest}, e o programa exibirá o valor \texttt{"Hello"} na saída.
+
+\subsection{\texttt{strcat()}: Concatenando Strings}
+A função \texttt{strcat()} é usada para concatenar (adicionar) uma string ao final de outra. Essa função é particularmente útil quando precisamos unir duas strings para formar uma frase completa.
+
+\textbf{Assinatura da função:}
+
+\begin{lstlisting}
+char *strcat(char *dest, const char *src);
+\end{lstlisting}
+
+\textbf{Exemplo Prático:}
+
+Vamos criar uma saudação completa ao concatenar duas palavras:
+
+\begin{lstlisting}
+char str1[20] = "Hello";
+char str2[] = " World";
+strcat(str1, str2);
+printf("%s\n", str1); // Resultado: Hello World
+\end{lstlisting}
+
+O conteúdo de \texttt{str1} se transforma em \texttt{"Hello World"} após a concatenação com \texttt{str2}.
+
+\subsection{\texttt{strcmp()}: Comparando Strings}
+A função \texttt{strcmp()} compara duas strings lexicograficamente, ou seja, de acordo com a ordem alfabética. É uma função fundamental para verificar se duas strings são iguais ou se uma vem antes ou depois da outra.
+
+\textbf{Assinatura da função:}
+
+\begin{lstlisting}
+int strcmp(const char *str1, const char *str2);
+\end{lstlisting}
+
+\textbf{Exemplo Prático:}
+
+Imagine que estamos comparando duas palavras para saber qual delas viria primeiro em um dicionário:
+
+\begin{lstlisting}
+char str1[] = "apple";
+char str2[] = "banana";
+int result = strcmp(str1, str2);
+if (result < 0) {
+    printf("str1 vem antes de str2.\n");
+} else if (result > 0) {
+    printf("str1 vem depois de str2.\n");
+} else {
+    printf("As strings são iguais.\n");
+}
+\end{lstlisting}
+
+Se \texttt{str1} for menor que \texttt{str2}, o valor retornado será negativo; caso contrário, será positivo.
+
+\subsection{\texttt{strstr()}: Buscando Substrings}
+A função \texttt{strstr()} busca uma substring dentro de outra string, retornando um ponteiro para a primeira ocorrência encontrada. Se a substring não for encontrada, ela retorna \texttt{NULL}.
+
+\textbf{Assinatura da função:}
+
+\begin{lstlisting}
+char *strstr(const char *haystack, const char *needle);
+\end{lstlisting}
+
+\textbf{Exemplo Prático:}
+
+Vamos verificar se a palavra "gram" aparece em "C Programming":
+
+\begin{lstlisting}
+char str[] = "C Programming";
+char *sub = strstr(str, "gram");
+if (sub != NULL) {
+    printf("Substring encontrada: %s\n", sub);
+} else {
+    printf("Substring não encontrada.\n");
+}
+\end{lstlisting}
+
+Neste exemplo, a função \texttt{strstr()} localiza a substring \texttt{"gram"} dentro da string principal e exibe o resultado a partir do ponto onde foi encontrada.
+
+\section{Conclusão}
+As funções da biblioteca \texttt{string.h} desempenham um papel crucial no desenvolvimento de software em C que lida com dados textuais. A manipulação eficiente de strings permite a criação de programas robustos e flexíveis, capazes de processar dados de maneira precisa e eficiente. Neste relatório, exploramos as funções mais importantes da biblioteca, ilustrando seu uso com exemplos claros e aplicáveis.
+
+\end{document}
