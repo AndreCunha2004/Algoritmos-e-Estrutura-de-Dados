@@ -1,2 +1,2 @@
-- This repository is where I save all the code and data I've been working on in my algorithmics class.
-    - It's a collection of the projects, experiments, and random scripts I've put together along the way.
+- This repository is used only by me to save all the code and data I've been working on in my algorithmics class.
+    - It's a collection of all the projects, experiments, and random scripts I've put together along the way.
